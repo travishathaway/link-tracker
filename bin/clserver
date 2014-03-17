@@ -20,4 +20,8 @@ class ClTcpHandler(SocketServer.BaseRequestHandler):
 if __name__=='__main__':
     HOST, PORT = 'localhost', 8111
     server = SocketServer.TCPServer((HOST, PORT), ClTcpHandler)
-    server.serve_forever()
+
+    try:
+        server.serve_forever()
+    except(KeyboardInterrupt,SystemExit):
+        server.shutdown()
